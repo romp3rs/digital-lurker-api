@@ -18,6 +18,7 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     total_experience = serializers.SerializerMethodField()
+    experience_level = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -29,6 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
                   'date_of_birth',
                   'pfp',
                   'total_experience',
+                  'experience_level',
                   'password']
         extra_kwargs = {'password': {'write_only': True}}
 
@@ -67,6 +69,14 @@ class UserSerializer(serializers.ModelSerializer):
             exp += place.experience
 
         return exp
+
+    def get_experience_level(self, obj):
+        experience = self.get_total_experience(obj)
+        level = 1
+        while experience >= 30:
+            experience = experience / 1.3
+            level += 1
+        return level
 
 
 class CreateUserSerializer(UserSerializer):

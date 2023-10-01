@@ -1,16 +1,15 @@
-# Projekt Voyager
+# Project Voyager
 ### Codename: DigitalLurker
 
 
-#### Instalacja
-1. Wypakuj/sklonuj repozytorium
-2. Skopiuj plik `.env.dist` jako `.env` i wypełnij je odpowiednimi wartościami
-3. Jeśli nie masz bazy danych PostGiS możesz ją zainstalować za pomocą dockera używając komendy `docker docker run --network host --name some-postgis -e POSTGRES_PASSWORD=<password> postgis/postgi`
-4. Stwórz bazę danych `CREATE DATABASE digitallurker;`. Jeśli masz bazę danych w dockerze to możesz tam wejść za pomocą `docker exec -ti d127b44ebfd0 psql -U postgres`.
-5. Zbuduj image projektu DigitalLurker za pomocą `docker build --network host . -t digital-lurker `.
-6. Uruchom projekt komendą `docker run --network host digital-lurker --port 8000:8000 `.
-7. Projekt jest gotowy do użytku.
+#### Installation
+1. Extract/clone repo.
+2. Copy file `.env.dist` as `.env` and fill it with appropriate values.
+3. If you do not have PostGis Database you can install it using docker using command `docker docker run --network host --name some-postgis -e POSTGRES_PASSWORD=<password> postgis/postgi` `docker docker run --network host --name some-postgis -e POSTGRES_PASSWORD=<password> postgis/postgi`
+4. Create database by `CREATE DATABASE <databasename>;`. If you use docker use `docker exec -ti <container_id>> psql -U postgres`.
+5. Build image of DigitalLurker by using command `docker build --network host . -t digital-lurker `.
+6. Run project by using `docker run --network host digital-lurker --port 8000:8000 `.
+7. DigitalLurker is ready to use.
 
-#### Dokumentacja kodu
-Aby dostać się do wszystkich możliwy route'ów w projekcie należy ustawić zmienną środowiskową (albo wartość w pliku `.env`) DEBUG='TRUE' oraz wejść na stronę projektu który uruchomiłeś z linkiem `/swagger/`. **Nie wszystkie tam dane są w 100% poprawne.**
-
+#### Code documentation
+To get to all possible routes in the project, set an environmental variable (or value in the `.env`) `debug = 'True'` and enter the project page you launched with the link `/swagger/`. **Although not all data there is 100% correct.**
